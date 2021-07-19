@@ -20,23 +20,6 @@ resource "aws_security_group" "public-sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-  #proxy port 
-  ingress {
-    from_port   = 5000
-    to_port     = 5000
-    protocol    = "tcp"
-    cidr_blocks = ["10.0.2.0/24"]
-  }
-
-  #redis 
-  ingress {
-    from_port   = 6379
-    to_port     = 6379
-    protocol    = "tcp"
-    cidr_blocks = ["10.0.2.0/24"]
-  }
-
   tags = {
     Name = "ec2-SG"
   }
@@ -56,6 +39,13 @@ resource "aws_security_group" "db-sg" {
   ingress {
     from_port   = 5432
     to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  ingress {
+    from_port   = 5000
+    to_port     = 5000
     protocol    = "tcp"
     cidr_blocks = ["10.0.1.0/24"]
   }
@@ -92,3 +82,4 @@ resource "aws_security_group" "redis-sg" {
     Name = "redis-sg"
   }
 }
+
