@@ -12,7 +12,6 @@ sudo amazon-linux-extras install -y redis6
 sudo yum install -y python3-devel
 sudo yum install -y python3-pip
 sudo yum install -y python3-setuptools
-sudo pip3 install psycopg2 configparser redis flask 
 
 sudo yum install -y postgresql-devel
 # clone app
@@ -54,5 +53,6 @@ sudo systemctl status nginx
 
 # run app
 cd /home/app
+sudo pip3 install psycopg2 configparser redis flask 
 sudo python3 -m venv /home/app
 source /home/app/bin/activate
